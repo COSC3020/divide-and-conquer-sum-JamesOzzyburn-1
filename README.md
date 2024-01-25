@@ -26,3 +26,8 @@ and solve it as we did in the lectures. Give the final $\Theta$ complexity.
 
 Describe your reasoning and the conclusion you've come to. Your reasoning is the
 most important part. Add your answer to this markdown file.
+
+# Answer
+The slides state that the recurrence relation is $T(n) = 2 * T(n/2) + 2$ for a merge sort splitting into two parts. When we split into three parts the recurrance relation simply becomes $T(n) = 3 * T(n/3) + 3$ which we then follows the substitution steps to get $T(n) = 3 * (3 * T(n/3/3) + 3) + 3$ which simplifies to $T(n) = 9 * T(n/9) + 6$.
+
+To get our $\Theta$ we can take our $T(n) = 3 * T(n/3) + 3$ and plug in $i$ to get $3^i * T(n/3^i) + 3i$ where $i$ is $i = log3(n)$. We can then simplify this to get $n * T(1) + 3log(n) = n(1) + 3 * log(n) = n * 3log(n)$ to get our final answer of $\Theta = n * 3log(n)$
