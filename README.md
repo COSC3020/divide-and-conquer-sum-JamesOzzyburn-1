@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/E1vcEWuv)
 # Divide and Conquer Sum
 
 In the lectures, we've covered merge sort, which uses a divide-and-conquer
@@ -25,3 +26,6 @@ and solve it as we did in the lectures. Give the final $\Theta$ complexity.
 
 Describe your reasoning and the conclusion you've come to. Your reasoning is the
 most important part. Add your answer to this markdown file.
+
+# Answer
+The slides state that the recurrence relation is $T(n) = 2 * T(n/2) +n$ for a merge sort splitting into two parts. When we split into three parts the recurrance relation simply becomes $T(n) = 3 * T(n/3) + n$. We can follow the subsitituion step to get $T(n) = 3(3*T(n/9) + 1) + 1$ and then substitude again to get $T(n) = 9(3*T(n/27) + 6) + 1$ and so we can that our pattern is $T(n) = 3^i*T(n/3^i) + \sum_{j=0}^{i-1} 3^j$. We then identify that $i = log3(n)$ as we want to simplify so when we plug $i$ we get $n + \sum_{j=0}^{log3(n-1)} 3^j$. Thus our average runtime is $\Theta(n)$ as $\sum_{j=0}^{log3(n-1)} 3^j \in \Theta(n)$
