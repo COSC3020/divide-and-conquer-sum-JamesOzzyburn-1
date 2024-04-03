@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/E1vcEWuv)
 # Divide and Conquer Sum
 
 In the lectures, we've covered merge sort, which uses a divide-and-conquer
@@ -25,3 +26,17 @@ and solve it as we did in the lectures. Give the final $\Theta$ complexity.
 
 Describe your reasoning and the conclusion you've come to. Your reasoning is the
 most important part. Add your answer to this markdown file.
+
+# Answer
+The recurrence relation we have is $T(n) = 3T(\frac{n}{3}) + C$
+
+There are two step to solve our recurrance relation 1. expand iteratively and 2. subtitute for i
+
+For step 1 we expand iteratively which gets us:
+$T(n) = 3^iT(\frac{n}{3^i}) + iC$
+
+For step 2 we now need to substitute $i = log3(n)$ and in doing so we get:
+
+$T(n) = 3^{log3(n)} T(1) + nC = nT(1) + nC$
+
+From this we can see that this will lead to linear time asymptotically. So the time complexity of this algorithm is $\Theta(n)$. This also makes sense intuitivly as it sums all of the smaller subparts during the recursion, which has a linear time complexity.
