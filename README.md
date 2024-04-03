@@ -28,4 +28,15 @@ Describe your reasoning and the conclusion you've come to. Your reasoning is the
 most important part. Add your answer to this markdown file.
 
 # Answer
-The slides state that the recurrence relation is $T(n) = 2 * T(n/2) +n$ for a merge sort splitting into two parts. When we split into three parts the recurrance relation simply becomes $T(n) = 3 * T(n/3) + n$. We can follow the subsitituion step to get $T(n) = 3(3*T(n/9) + 1) + 1$ and then substitude again to get $T(n) = 9(3*T(n/27) + 6) + 1$ and so we can that our pattern is $T(n) = 3^i*T(n/3^i) + \sum_{j=0}^{i-1} 3^j$. We then identify that $i = log3(n)$ as we want to simplify so when we plug $i$ we get $n + \sum_{j=0}^{log3(n-1)} 3^j$. Thus our average runtime is $\Theta(n)$ as $\sum_{j=0}^{log3(n-1)} 3^j \in \Theta(n)$
+The recurrence relation we have is $T(n) = 3T(\frac{n}{3}) + C$
+
+There are two step to solve our recurrance relation 1. expand iteratively and 2. subtitute for i
+
+For step 1 we expand iteratively which gets us:
+$T(n) = 3^iT(\frac{n}{3^i}) + iC$
+
+For step 2 we now need to substitute $i = log3(n)$ and in doing so we get:
+
+$T(n) = 3^{log3(n)} T(1) + nC = nT(1) + nC$
+
+From this we can see that this will lead to linear time asymptotically. So the time complexity of this algorithm is $\Theta(n)$. This also makes sense intuitivly as it sums all of the smaller subparts during the recursion, which has a linear time complexity.
